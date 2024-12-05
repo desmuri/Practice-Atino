@@ -1,190 +1,130 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html>
-<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.0.0' expr:class='data:blog.languageDirection' expr:dir='data:blog.languageDirection' expr:lang='data:blog.localeUnderscoreDelimited' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
-<head>
-<b:include name='theme-head'/>
-<b:if cond='!data:view.isLayoutMode'>
-<!-- Theme CSS Style -->
-<b:skin version='1.0.0'><![CDATA[/*
------------------------------------------------
-Blogger Template StyleSpotBuzz - Version - 1.0
-Name:         Flexify
-License:      Free Version
-Version:      1.0
-Author:       Templateify
-Author Url:   https://www.templateify.com/
------------------------------------------------*/
+/*-- Opciones de personalización (Inicio) --*/
+<Variable name="keycolor" description="Color principal" type="color" default="#f63a3a" value="#f63a3a"/>
+<Group description="Opciones del Tema">
+    <Variable name="boxed" description="Modo con caja" type="length" default="0px" min="0px" max="1px" value="0px"/>
+    <Variable name="fixedmenu" description="Menú fijo" type="length" default="1px" min="0px" max="1px" value="1px"/>
+    <Variable name="sidebar" description="Barra lateral izquierda" type="length" default="0px" min="0px" max="1px" value="0px"/>
+    <Variable name="fixedsidebar" description="Barra lateral fija" type="length" default="1px" min="0px" max="1px" value="1px"/>
+</Group>
+<Group description="Anchos del Tema">
+    <Variable name="row.width" description="Ancho del contenedor" type="length" default="1140px" min="1100px" max="1200px" value="1140px"/>
+    <Variable name="sidebar.width" description="Ancho de la barra lateral" type="length" default="300px" min="250px" max="336px" value="300px"/>
+</Group>
+<Group description="Colores del Tema">
+    <Variable name="background.color" description="Fondo del cuerpo" type="color" default="#F7F7F7"  value="#F7F7F7"/>
+    <Variable name="outer.bg" description="Fondo exterior" type="color" default="#FFFFFF"  value="#FFFFFF"/>
+    <Variable name="main.color" description="Color principal" type="color" default="#f63a3a" value="#f63a3a"/>
+    <Variable name="title.color" description="Color del título" type="color" default="#161618" value="#161618"/>
+    <Variable name="title.hover.color" description="Color de hover del título" type="color" default="$(main.color)" value="#f63a3a"/>
+    <Variable name="meta.color" description="Color de los metadatos" type="color" default="#979797" value="#979797"/>
+    <Variable name="text.color" description="Color del texto" type="color" default="#626262"  value="#626262"/>
+    <Variable name="tag.bg" description="Fondo de la etiqueta" type="color" default="$(main.color)" value="#f63a3a"/>
+    <Variable name="tag.color" description="Color de la etiqueta" type="color" default="#FFFFFF"  value="#FFFFFF"/>
+</Group>
+<Group description="Fuentes del Tema">
+    <!-- Cargar solo la fuente necesaria para mejorar el rendimiento -->
+    <Variable name="main.font" description="Fuente del sitio" type="font" family="Inter" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
+    <Variable name="menu.font" description="Fuente del menú" type="font" family="Inter" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
+    <Variable name="title.font" description="Fuente del título" type="font" family="Inter" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
+    <Variable name="text.font" description="Fuente del texto" type="font" family="Inter" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
+</Group>
+<Group description="Barra superior" selector="nav.topbar-wrap">
+    <Variable name="topbar.bg" description="Fondo de la barra superior" type="color" default="#080809" value="#080809"/>
+    <Variable name="topbar.color" description="Color de la barra superior" type="color" default="#ffffff" value="#ffffff"/>
+    <Variable name="topbar.bor" description="Color del borde de la barra superior" type="color" default="#282828" value="#282828"/>
+    <Variable name="topbar.hover.color" description="Color de hover de la barra superior" type="color" default="$(main.color)" value="#f63a3a"/>
+</Group>
+<Group description="Cabecera del sitio" selector="#header-wrapper">
+    <Variable name="header.bg" description="Fondo de la cabecera 1" type="color" default="#315797" value="#315797"/>
+    <Variable name="header.bg1" description="Fondo de la cabecera 2" type="color" default="#440154" value="#440154"/>
+    <Variable name="header.color" description="Color de la cabecera" type="color" default="#FFFFFF" value="#FFFFFF"/>
+    <Variable name="header.hover.color" description="Color de hover de la cabecera" type="color" default="$(main.color)" value="#f63a3a"/>
+</Group>
+<Group description="Submenú">
+    <Variable name="submenu.bg" description="Fondo del submenú" type="color" default="#FFFFFF" value="#FFFFFF"/>
+    <Variable name="submenu.color" description="Color del submenú" type="color" default="$(title.color)" value="#161618"/>
+    <Variable name="submenu.hover.color" description="Color de hover del submenú" type="color" default="$(main.color)" value="#f63a3a"/>
+</Group>
+<Group description="Menú Mega">
+    <Variable name="mega.bg" description="Fondo del menú mega" type="color" default="$(submenu.bg)" value="#FFFFFF"/>
+    <Variable name="mega.color" description="Color del menú mega" type="color" default="$(submenu.color)" value="#161618"/>
+    <Variable name="mega.hover.color" description="Color de hover del menú mega" type="color" default="$(main.color)" value="#f63a3a"/>
+    <Variable name="mega.meta.color" description="Color de los metadatos del menú mega" type="color" default="#979797" value="#979797"/>
+</Group>
+<Group description="Menú móvil">
+    <Variable name="mobilemenu.bg" description="Fondo del menú móvil" type="color" default="$(outer.bg)" value="#FFFFFF"/>
+    <Variable name="mobilemenu.color" description="Color del menú móvil" type="color" default="$(title.color)" value="#161618"/>
+    <Variable name="mobilemenu.hover.color" description="Color de hover del menú móvil" type="color" default="$(main.color)" value="#f63a3a"/>
+</Group>
+<Group description="Widgets del Tema" select="#sidebar">
+    <Variable name="widget.title.bg" description="Fondo del título" type="color" default="#626262"  value="#626262"/>
+    <Variable name="widget.title.color" description="Color del título" type="color" default="#ffffff" value="#ffffff"/>
+</Group>
+<Group description="Widget de video" select="div.video-style">
+    <Variable name="video.widget.bg" description="Fondo del widget" type="color" default="#222226" value="#222226"/>
+    <Variable name="video.widget.color" description="Color del título" type="color" default="#FFFFFF" value="#FFFFFF"/>
+    <Variable name="video.widget.hover.color" description="Color de hover del título" type="color" default="$(main.color)" value="#f63a3a"/>
+    <Variable name="video.widget.meta.color" description="Color de los metadatos" type="color" default="#AAAAAA" value="#AAAAAA"/>
+</Group>
+<Group description="Estilos de las publicaciones" select="#main">
+    <Variable name="itempost.title.size" description="Tamaño de la fuente del título" type="length" default="35px" min="20px" max="50px" value="35px"/>
+    <Variable name="itempost.content.size" description="Tamaño de la fuente del texto" type="length" default="15px" min="12px" max="20px" value="15px"/>
+</Group>
+<Group description="Opciones de publicación" select="#main">
+    <Variable name="headerad.onpost" description="Anuncios en la cabecera" type="length" default="1px" min="0px" max="1px" value="1px"/>
+    <Variable name="breadcrumb" description="Migas de pan en la publicación" type="length" default="1px" min="0px" max="1px" value="1px"/>
+    <Variable name="cmm.count" description="Contador de comentarios" type="length" default="1px" min="0px" max="1px" value="1px"/>
+    <Variable name="postnav" description="Navegación de publicaciones" type="length" default="1px" min="0px" max="1px" value="1px"/>
+    <Variable name="footerad.onpost" description="Anuncios en el pie de página" type="length" default="1px" min="0px" max="1px" value="1px"/>
+</Group>
+<Group description="Pie de página del tema" selector="#footer-wrapper">
+    <Variable name="footer.bg" description="Fondo del pie de página" type="color" default="#282828" value="#282828"/>
+    <Variable name="footer.color" description="Color del pie de página" type="color" default="#f2f2f2" value="#f2f2f2"/>
+    <Variable name="footer.hover.color" description="Color de hover del pie de página" type="color" default="$(main.color)" value="#f63a3a"/>
+</Group>
+/*-- Opciones de personalización (Fin) --*/
 
-/*-- Customize Options (Start) --
-<Variable name="keycolor" description="Main Color" type="color" default="#f63a3a" value="#f63a3a"/>
-<Group description="Theme Options">
-    <Variable name="boxed" description="Boxed Mode" type="length" default="0px" min="0px" max="1px" value="0px"/>
-    <Variable name="fixedmenu" description="Fixed Menu" type="length" default="1px" min="0px" max="1px" value="1px"/>
-    <Variable name="sidebar" description="Left Sidebar" type="length" default="0px" min="0px" max="1px" value="0px"/>
-    <Variable name="fixedsidebar" description="Fixed Sidebar" type="length" default="1px" min="0px" max="1px" value="1px"/>
-</Group>
-<Group description="Theme Widths">
-    <Variable name="row.width" description="Container Width" type="length" default="1140px" min="1100px" max="1200px" value="1140px"/>
-    <Variable name="sidebar.width" description="Sidebar Width" type="length" default="300px" min="250px" max="336px" value="300px"/>
-</Group>
-<Group description="Theme Colors">
-	<Variable name="background.color" description="Body Background" type="color" default="#F7F7F7"  value="#F7F7F7"/>
-    <Variable name="outer.bg" description="Outer Background" type="color" default="#FFFFFF"  value="#FFFFFF"/>
-    <Variable name="main.color" description="Theme Color" type="color" default="#f63a3a" value="#f63a3a"/>
-    <Variable name="title.color" description="Title Color" type="color" default="#161618" value="#161618"/>
-    <Variable name="title.hover.color" description="Title Hover Color" type="color" default="$(main.color)" value="#f63a3a"/>
-    <Variable name="meta.color" description="Meta Color" type="color" default="#979797" value="#979797"/>
-    <Variable name="text.color" description="Text Color" type="color" default="#626262"  value="#626262"/>
-    <Variable name="tag.bg" description="Tag Background" type="color" default="$(main.color)" value="#f63a3a"/>
-    <Variable name="tag.color" description="Tag Color" type="color" default="#FFFFFF"  value="#FFFFFF"/>
-</Group>
-<Group description="Theme Fonts">
-    <Variable name="main.font" description="Site Font" type="font" family="Inter" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
-    <Variable name="menu.font" description="Menu Font" type="font" family="Inter" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
-    <Variable name="title.font" description="Title Font" type="font" family="Inter" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
-    <Variable name="text.font" description="Text Font" type="font" family="Inter" default="normal 400 14px $(family)" value="normal 400 14px $(family)"/>
-</Group>
-<Group description="Top Bar" selector="nav.topbar-wrap">
-    <Variable name="topbar.bg" description="Top Bar Background" type="color" default="#080809" value="#080809"/>
-    <Variable name="topbar.color" description="Top Bar Color" type="color" default="#ffffff" value="#ffffff"/>
-    <Variable name="topbar.bor" description="Top Bar Border Color" type="color" default="#282828" value="#282828"/>
-    <Variable name="topbar.hover.color" description="Top Bar Hover Color" type="color" default="$(main.color)" value="#f63a3a"/>
-</Group>
-<Group description="Site Header" selector="#header-wrapper">
-    <Variable name="header.bg" description="Header Background 1" type="color" default="#315797" value="#315797"/>
-    <Variable name="header.bg1" description="Header Background 2" type="color" default="#440154" value="#440154"/>
-    <Variable name="header.color" description="Header Color" type="color" default="#FFFFFF" value="#FFFFFF"/>
-    <Variable name="header.hover.color" description="Header Hover Color" type="color" default="$(main.color)" value="#f63a3a"/>
-</Group>
-<Group description="Sub Menu">
-    <Variable name="submenu.bg" description="Sub Menu Background" type="color" default="#FFFFFF" value="#FFFFFF"/>
-    <Variable name="submenu.color" description="Sub Menu Color" type="color" default="$(title.color)" value="#161618"/>
-    <Variable name="submenu.hover.color" description="Sub Menu Hover Color" type="color" default="$(main.color)" value="#f63a3a"/>
-</Group>
-<Group description="Mega Menu">
-    <Variable name="mega.bg" description="Mega Menu Background" type="color" default="$(submenu.bg)" value="#FFFFFF"/>
-    <Variable name="mega.color" description="Mega Menu Color" type="color" default="$(submenu.color)" value="#161618"/>
-    <Variable name="mega.hover.color" description="Mega Menu Hover Color" type="color" default="$(main.color)" value="#f63a3a"/>
-    <Variable name="mega.meta.color" description="Mega Meta Color" type="color" default="#979797" value="#979797"/>
-</Group>
-<Group description="Mobile Menu">
-    <Variable name="mobilemenu.bg" description="Mobile Menu Background" type="color" default="$(outer.bg)" value="#FFFFFF"/>
-    <Variable name="mobilemenu.color" description="Mobile Menu Color" type="color" default="$(title.color)" value="#161618"/>
-    <Variable name="mobilemenu.hover.color" description="Mobile Menu Hover Color" type="color" default="$(main.color)" value="#f63a3a"/>
-</Group>
-<Group description="Theme Widgets" select="#sidebar">
-    <Variable name="widget.title.bg" description="Title Background" type="color" default="#626262"  value="#626262"/>
-    <Variable name="widget.title.color" description="Title Color" type="color" default="#ffffff" value="#ffffff"/>
-</Group>
-<Group description="Video Widget" select="div.video-style">
-    <Variable name="video.widget.bg" description="Widget Background" type="color" default="#222226" value="#222226"/>
-    <Variable name="video.widget.color" description="Title Color" type="color" default="#FFFFFF" value="#FFFFFF"/>
-    <Variable name="video.widget.hover.color" description="Title Hover Color" type="color" default="$(main.color)" value="#f63a3a"/>
-    <Variable name="video.widget.meta.color" description="Meta Color" type="color" default="#AAAAAA" value="#AAAAAA"/>
-</Group>
-<Group description="Post Styles" select="#main">
-    <Variable name="itempost.title.size" description="Title Font Size" type="length" default="35px" min="20px" max="50px" value="35px"/>
-    <Variable name="itempost.content.size" description="Text Font Size" type="length" default="15px" min="12px" max="20px" value="15px"/>
-</Group>
-<Group description="Post Options" select="#main">
-    <Variable name="headerad.onpost" description="Header ADS" type="length" default="1px" min="0px" max="1px" value="1px"/>
-    <Variable name="breadcrumb" description="Post Breadcrumbs" type="length" default="1px" min="0px" max="1px" value="1px"/>
-    <Variable name="cmm.count" description="Comments Count" type="length" default="1px" min="0px" max="1px" value="1px"/>
-    <Variable name="postnav" description="Post Navigation" type="length" default="1px" min="0px" max="1px" value="1px"/>
-    <Variable name="footerad.onpost" description="Footer ADS" type="length" default="1px" min="0px" max="1px" value="1px"/>
-</Group>
-<Group description="Theme Footer" selector="#footer-wrapper">
-    <Variable name="footer.bg" description="Footer Background" type="color" default="#ffffff" value="#ffffff"/>
-    <Variable name="footer.color" description="Footer Color" type="color" default="#000000" value="#000000"/>
-    <Variable name="footer.hover.color" description="Footer Hover Color" type="color" default="$(main.color)" value="#f63a3a"/>
-    <Variable name="footer.meta.color" description="Footer Meta Color" type="color" default="#AAAAAA" value="#AAAAAA"/>
-    <Variable name="footer.text.color" description="Footer Text Color" type="color" default="#626262"  value="#626262"/>
-</Group>
-<Group description="Footer Bar" selector="div.footer-bar">
-    <Variable name="footerbar.bg" description="Footer Bar Background" type="color" default="#ffffff" value="#ffffff"/>
-    <Variable name="footerbar.color" description="Footer Bar Color" type="color" default="#626262"  value="#626262"/>
-    <Variable name="footerbar.hover.color" description="Footer Bar Hover Color" type="color" default="$(main.color)" value="#f63a3a"/>
-</Group>
-<Group description="Cookie Consent" selector="#flexify-pro-cookie-consent">
-    <Variable name="cookie.bg" description="Cookie Background" type="color" default="#FFFFFF" value="#FFFFFF"/>
-    <Variable name="cookie.color" description="Cookie Text Color" type="color" default="$(text.color)" value="#626262"/>
-</Group>
-<Group description="Theme Buttons">
-    <Variable name="button.bg" description="Button Background" type="color" default="$(main.color)" value="#f63a3a"/>
-    <Variable name="button.color" description="Button Color" type="color" default="#FFFFFF" value="#FFFFFF"/>
-    <Variable name="button.hover.bg" description="Button Hover Background" type="color" default="#1870EB" value="#1870EB"/>
-    <Variable name="button.hover.color" description="Button Hover Color" type="color" default="#FFFFFF" value="#FFFFFF"/>
-</Group>
-<Group description="Theme Fonts (Reset)">
-    <!-- Site Font -->
-    <Variable name="mainfont.italic" description="Main Font Italic" type="font" default="italic 400 14px $(main.font.family)" value="italic 400 14px $(family)"/>
-    <Variable name="mainfont.medium" description="Main Font Medium" type="font" default="normal 500 14px $(main.font.family)" value="normal 500 14px $(family)"/>
-    <Variable name="mainfont.mediumitalic" description="Main Font Medium Italic" type="font" default="italic 500 14px $(main.font.family)" value="italic 500 14px $(family)"/>
-    <Variable name="mainfont.sb" description="Main Font SemiBold" type="font" default="normal 600 14px $(main.font.family)" value="normal 600 14px $(family)"/>
-    <Variable name="mainfont.sbitalic" description="Main Font SemiBold Italic" type="font" default="italic 600 14px $(main.font.family)" value="italic 600 14px $(family)"/>
-    <Variable name="mainfont.bold" description="Main Font Bold" type="font" default="normal 700 14px $(main.font.family)" value="normal 700 14px $(family)"/>
-    <Variable name="mainfont.bolditalic" description="Main Font Bold Italic" type="font" default="italic 700 14px $(main.font.family)" value="italic 700 14px $(family)"/>
-    <!-- Menu Font -->
-    <Variable name="menufont.italic" description="Menu Font Italic" type="font" default="italic 400 14px $(menu.font.family)" value="italic 400 14px $(family)"/>
-    <Variable name="menufont.bold" description="Menu Font Bold" type="font" default="normal 700 14px $(menu.font.family)" value="normal 700 14px $(family)"/>
-    <Variable name="menufont.bolditalic" description="Menu Font Bold Italic" type="font" default="italic 700 14px $(menu.font.family)" value="italic 700 14px $(family)"/>
-    <!-- Title Font -->
-    <Variable name="titlefont.italic" description="Title Font Italic" type="font" default="italic 400 14px $(title.font.family)" value="italic 400 14px $(family)"/>
-    <Variable name="titlefont.medium" description="Title Font Medium" type="font" default="normal 500 14px $(title.font.family)" value="normal 500 14px $(family)"/>
-    <Variable name="titlefont.mediumitalic" description="Title Font Medium Italic" type="font" default="italic 500 14px $(title.font.family)" value="italic 500 14px $(family)"/>
-    <Variable name="titlefont.sb" description="Title Font SemiBold" type="font" default="normal 600 14px $(title.font.family)" value="normal 600 14px $(family)"/>
-    <Variable name="titlefont.sbitalic" description="Title Font SemiBold Italic" type="font" default="italic 600 14px $(title.font.family)" value="italic 600 14px $(family)"/>
-    <Variable name="titlefont.bold" description="Title Font Bold" type="font" default="normal 700 14px $(title.font.family)" value="normal 700 14px $(family)"/>
-    <Variable name="titlefont.bolditalic" description="Title Font Bold Italic" type="font" default="italic 700 14px $(title.font.family)" value="italic 700 14px $(family)"/>
-    <!-- Text Font -->
-    <Variable name="textfont.italic" description="Text Font Italic" type="font" default="italic 400 14px $(text.font.family)" value="italic 400 14px $(family)"/>
-    <Variable name="textfont.bold" description="Text Font Bold" type="font" default="normal 700 14px $(text.font.family)" value="normal 700 14px $(family)"/>
-    <Variable name="textfont.bolditalic" description="Text Font Bold Italic" type="font" default="italic 700 14px $(text.font.family)" value="italic 700 14px $(family)"/>
-</Group>
-<Variable name="body.background" description="Background" type="background" color="$(background.color)" default="$(color) none repeat fixed top left" value="$(color) none repeat fixed top left"/>
-<Variable name="body.background.color" description="Comments Background" hideEditor="true" type="color" default="transparent"  value="transparent"/>
-<Variable name="body.title.color" description="Comments Color" hideEditor="true" type="color" default="$(title.color)" value="#161618"/>
-<Variable name="body.text.color" description="Comments Text Color" hideEditor="true" type="color" default="$(text.color)"  value="#626262"/>
-<Variable name="body.link.color" description="Comments Link Color" hideEditor="true" type="color" default="$(main.color)"  value="#f63a3a"/>
-<Variable name="body.text.font" description="Comments Font 1" hideEditor="true" type="font" default="normal 400 15px roboto, Arial, sans-serif !important"  value="normal 400 15px roboto, Arial, sans-serif !important"/>
-<Variable name="body.action.font.large" description="Comments Font 2" hideEditor="true" type="font" default="normal 700 15px roboto, Arial, sans-serif !important"  value="normal 700 15px roboto, Arial, sans-serif !important"/>
--- Customize Options (End) --*/
+/* Diseño Responsivo */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .menu {
+        display: block;
+    }
+    #header-wrapper {
+        padding: 10px;
+    }
+}
 
-/*-- Google Fonts --*/
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7SUc.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7SUc.woff2) format("woff2");unicode-range:U+1F00-1FFF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2) format("woff2");unicode-range:U+0370-03FF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+1EA0-1EF9,U+20AB}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7SUc.woff2) format("woff2");unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7SUc.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7SUc.woff2) format("woff2");unicode-range:U+1F00-1FFF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2) format("woff2");unicode-range:U+0370-03FF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+1EA0-1EF9,U+20AB}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7SUc.woff2) format("woff2");unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7SUc.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7SUc.woff2) format("woff2");unicode-range:U+1F00-1FFF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2) format("woff2");unicode-range:U+0370-03FF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+1EA0-1EF9,U+20AB}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7SUc.woff2) format("woff2");unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7SUc.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7SUc.woff2) format("woff2");unicode-range:U+1F00-1FFF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2) format("woff2");unicode-range:U+0370-03FF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+1EA0-1EF9,U+20AB}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7SUc.woff2) format("woff2");unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v3/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+/* Modo Oscuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
 
-/*-- Material Icons Font --*/
-@font-face{font-family:"Material Icons Round";font-display:swap;font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/materialiconsround/v65/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2) format("woff2")}.mir{font-family:"Material Icons Round";font-weight:400;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:liga;-webkit-font-smoothing:antialiased}@font-face{font-family:"PBT Icons";font-display:block;font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/materialiconsround/v65/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2) format("woff2")}
+body.dark-mode #header-wrapper {
+    background-color: #444;
+}
 
-/*-- Font Awesome 5 Brands 5.15.3 --*/
-@font-face{font-family:"Font Awesome 5 Brands";font-display:swap;font-style:normal;font-weight:400;src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.eot);src:url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.woff2) format("woff2"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.woff) format("woff"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.ttf) format("truetype"),url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/webfonts/fa-brands-400.svg#fontawesome) format("svg")}.fab{font-family:"Font Awesome 5 Brands";font-weight:400}
+body.dark-mode .main-content {
+    background-color: #222;
+}
+
+/* Menú */
+.menu-item:hover {
+    color: #f63a3a;
+}
+
+/* Mega Menú */
+.mega-menu {
+    background-color: #ffffff;
+    color: #161618;
+}
+
+.mega-menu:hover {
+    color: #f63a3a;
+}
 
 /*-- CSS Variables --*/
 :root{
